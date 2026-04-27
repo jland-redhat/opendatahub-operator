@@ -109,7 +109,7 @@ func customizeManifests(ctx context.Context, rr *types.ReconciliationRequest) er
 		"app-namespace":     appNamespace,
 	}
 
-	if err := odhdeploy.ApplyParams(rr.Manifests[0].String(), "params.env", nil, gatewayParams); err != nil {
+	if err := odhdeploy.ApplyParams(rr.Manifests[0].String(), "params.env", imagesMap, gatewayParams); err != nil {
 		return fmt.Errorf("failed to update Gateway params on path %s: %w", rr.Manifests[0].String(), err)
 	}
 
